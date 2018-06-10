@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/black"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <!-- <android.support.v7.widget.Toolbar
+         android:id="@+id/toolbar"
+         android:layout_width="match_parent"
+         android:layout_height="58dp"
+         android:minHeight="?attr/actionBarSize"
+         android:titleTextColor="@color/black" />-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="58dp"-->
+    <!--android:background="?attr/colorPrimary"-->
+    <!--android:minHeight="?attr/actionBarSize"-->
+    <!--android:titleTextColor="#ffffff">-->
+    <!--</android.support.v7.widget.Toolbar>-->
+    <ImageButton
+        android:id="@+id/toolbar_icon"
+        android:src="@drawable/ic_arrow_back"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:background="@android:color/transparent"
+         />
+    <TextView
+        android:text="@string/sign_in"
+        android:id="@+id/toolbar_text"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:gravity="center_vertical"
+        tools:ignore="RtlHardcoded" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/dropshadow" />
+</LinearLayout>

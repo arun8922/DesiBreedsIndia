@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "978253833518",
+    "firebase_url": "https://desibreedsindia.firebaseio.com",
+    "project_id": "desibreedsindia",
+    "storage_bucket": "desibreedsindia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978253833518:android:d0d3b0d7e88d5849",
+        "android_client_info": {
+          "package_name": "com.desibreedsindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978253833518-0eont2jjrjlccu5s2ukvu1cooipf3d78.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desibreedsindia",
+            "certificate_hash": "4876955d27692f5c1dea2410085d22ba4a17a533"
+          }
+        },
+        {
+          "client_id": "978253833518-ufh1flh6lmemlk3fa64vapa42imkoqlr.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "978253833518-ufh1flh6lmemlk3fa64vapa42imkoqlr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCdu9BEpQmGeTUnZB0EDW0P0BCPyU1jDI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978253833518-ufh1flh6lmemlk3fa64vapa42imkoqlr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
