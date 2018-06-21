@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.desibreedsindia.BaseActivity;
 import com.desibreedsindia.R;
 import com.desibreedsindia.signUp.SignUPActivity;
 import com.google.android.gms.ads.AdListener;
@@ -35,7 +36,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class PhoneVerificationActivity extends AppCompatActivity {
+public class PhoneVerificationActivity extends BaseActivity {
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private FirebaseAuth mAuth;
@@ -50,10 +51,20 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private AdView mAdView;
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.phone_verification);
+
+    }*/
+
+    @Override
+    public int setLayout() {
+        return R.layout.phone_verification;
+    }
+
+    @Override
+    public void Initialize() {
         phoneed = (EditText) findViewById(R.id.numbered);
         countryCodePicker=(CountryCodePicker)findViewById(R.id.country_code);
         codeed = (EditText) findViewById(R.id.verificationed);
@@ -63,10 +74,9 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
-
+        mAuth.signOut();
 
         mAdView = (AdView) findViewById(R.id.adView);
-
 
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -215,7 +225,13 @@ public class PhoneVerificationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void setFont() {
+
+    }
+
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -225,6 +241,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
 
                             FirebaseUser user = task.getResult().getUser();
+
                             mVerified = true;
                             timer.cancel();
                             verifiedimg.setVisibility(View.VISIBLE);
@@ -327,6 +344,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         if (mAdView != null) {
             mAdView.destroy();
         }
+        mAuth.signOut();
         super.onDestroy();
     }
 

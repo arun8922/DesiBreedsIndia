@@ -6,6 +6,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.desibreedsindia.Utils.Config;
+import com.desibreedsindia.Utils.SessionSave;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -24,6 +25,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
         // Saving reg id to shared preferences
         storeRegIdInPref(refreshedToken);
+        SessionSave.saveSession("fcmToken",refreshedToken,MyFirebaseInstanceIDService.this);
 
         // sending reg id to your server
         sendRegistrationToServer(refreshedToken);

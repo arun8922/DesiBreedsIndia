@@ -12,29 +12,46 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.desibreedsindia.BaseActivity;
 import com.desibreedsindia.R;
 import com.desibreedsindia.Utils.Config;
 import com.desibreedsindia.Utils.NotificationUtils;
+import com.desibreedsindia.interfaces.APIResult;
+import com.desibreedsindia.service.APIService_Volley_JSON_No_Progress;
 import com.desibreedsindia.signIn.PhoneVerificationActivity;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.desibreedsindia.BaseActivity.showSnack;
 
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.activity_splash);
+//
+//
+//
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public int setLayout() {
+        return R.layout.activity_splash;
+    }
 
-        setContentView(R.layout.activity_splash);
+    @Override
+    public void Initialize() {
 
-        Intent intent = new Intent(SplashActivity.this, PhoneVerificationActivity.class);
-        startActivity(intent);
-        finish();
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -59,6 +76,10 @@ public class SplashActivity extends AppCompatActivity {
         };
 
         displayFirebaseRegId();
+    }
+
+    @Override
+    public void setFont() {
 
     }
 
@@ -86,6 +107,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // clear the notification area when the app is opened
         NotificationUtils.clearNotifications(getApplicationContext());
+        new BaseAPI();
     }
 
     @Override
@@ -93,4 +115,61 @@ public class SplashActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
         super.onPause();
     }
+
+
+    private class BaseAPI implements APIResult {
+        String msg = "";
+
+
+        BaseAPI() {
+
+            try {
+                if (isOnline()) {
+                    new APIService_Volley_JSON_No_Progress(SplashActivity.this, this, true).execute("splash_api");
+                } else {
+                    //alert_view(SplashActivity.this,getResources().getString(R.string.message),getResources().getString(R.string.check_internet),getResources().getString(R.string.ok), "");
+                    showSnack(SplashActivity.this, 2, getResources().getString(R.string.check_internet), null);
+                }
+
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void getResult(boolean isSuccess, String result) {
+            try {
+                if (isSuccess) {
+                    JSONObject json = new JSONObject(result);
+                    msg = json.getString("message");
+//                    alert_view(SplashActivity.this,getResources().getString(R.string.message), msg,getResources().getString(R.string.ok), "");
+
+                    Intent intent = new Intent(SplashActivity.this, PhoneVerificationActivity.class);
+                    startActivity(intent);
+                    finish();
+                   /* if (json.getInt("status") == 1) {
+                        try {
+                            Intent intent = new Intent(SplashActivity.this, PhoneVerificationActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            e.printStackTrace();
+                        }
+                    }  else {
+
+                        showSnack(SplashActivity.this, 1, getResources().getString(R.string.message), null);
+
+                    }*/
+                } else {
+//                    alert_view(SplashActivity.this,getResources().getString(R.string.message),getResources().getString(R.string.internal_error),getResources().getString(R.string.ok), "");
+                    showSnack(SplashActivity.this, 2, getResources().getString(R.string.check_internet), null);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

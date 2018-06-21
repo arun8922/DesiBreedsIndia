@@ -9,6 +9,16 @@
     <string name="admob_app_id" translatable="false">ca-app-pub-1176560215561819~1912392876</string>
     <string name="banner_home_footer" translatable="false">ca-app-pub-1176560215561819/1030981070</string>
 
+    <string name="warn_name">Enter the Name</string>
+    <string name="warn_mobile">Enter the Mobile</string>
+    <string name="warn_valid_mobile">Enter the Valid Mobile</string>
+    <string name="warn_email">Enter the Email</string>
+    <string name="warn_valid_email">Enter the Valid Email</string>
+
+    <string name="warn_password">Enter the Password</string>
+    <string name="warn_valid_password">Password should not below 5 characters</string>
+    <string name="warn_otp">Enter the Valid OTP</string>
+
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -34,4 +44,25 @@
     <string name="password">Password</string>
     <string name="create_account">Create Account</string>
     <string name="address">Address</string>
+    <string name="check_internet">Check Internet Connection</string>
+    <string name="GOOGLE_ASSET_KEY">red</string>
+    <string name="ok">OK</string>
+    <string name="retry">Retry</string>
+    <string name="message">Message</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
+    <string name="rationale_location_contacts">This app needs access to your location and contacts to know where and who you are.</string>
+    <string name="rationale_sms">This app needs access to your sms to read all your great messages.</string>
+    <string name="returned_from_app_settings_to_activity">
+        Returned from app settings to MainActivity with the following permissions:
+        \n\nCamera: %s
+        \nLocation &amp; Contacts: %s
+        \nSMS: %s
+    </string>
+    <string name="camera">Camera</string>
+    <string name="location_and_contacts">Location and Contacts</string>
+    <string name="sms">SMS</string>
 </resources>
