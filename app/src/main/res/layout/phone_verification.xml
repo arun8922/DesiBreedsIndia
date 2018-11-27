@@ -99,14 +99,24 @@
 
 
                         </LinearLayout>
-                        <ImageView
+
+                        <cdflynn.android.library.checkview.CheckView
+                            android:id="@+id/verifiedsign"
+                            android:layout_gravity="center"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:visibility="gone"
+                            android:layout_marginTop="15dp"
+                            app:checkView_strokeColor="@color/green"
+                            app:checkView_strokeWidth="10dp"/>
+                        <!--<ImageView
                             android:id="@+id/verifiedsign"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="15dp"
                             android:src="@drawable/ic_check_circle_black_24dp"
-                            android:visibility="gone" />
+                            android:visibility="gone" />-->
                         <EditText
                             android:id="@+id/verificationed"
                             android:layout_width="wrap_content"
@@ -159,7 +169,7 @@
         android:id="@+id/adView"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_home_footer">

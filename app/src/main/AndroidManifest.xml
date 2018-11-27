@@ -17,6 +17,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 
     <uses-feature android:name="android.hardware.camera" />
@@ -77,6 +79,8 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".signUp.SignUPActivity"/>
+        <activity android:name=".AdDetailsActivity"/>
+        <activity android:name=".AnimateToolbar"/>
 
 
 

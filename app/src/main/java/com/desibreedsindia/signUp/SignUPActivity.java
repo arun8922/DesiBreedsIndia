@@ -96,7 +96,6 @@ public class SignUPActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 //                new RegisterAPI();
-
                 Intent intent=new Intent(SignUPActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
@@ -174,7 +173,9 @@ public class SignUPActivity extends BaseActivity {
                     if (json.getInt("status") == 1) {
                         try {
 
-ShowToast(SignUPActivity.this,"kjkkjkjk");
+
+                            Intent intent=new Intent(SignUPActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         } catch (Exception e) {
                             // TODO: handle exception
                             e.printStackTrace();

@@ -36,6 +36,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+import cdflynn.android.library.checkview.CheckView;
+
 public class PhoneVerificationActivity extends BaseActivity {
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -46,7 +48,7 @@ public class PhoneVerificationActivity extends BaseActivity {
     TextView timertext;
     Timer timer;
     CountryCodePicker countryCodePicker;
-    ImageView verifiedimg;
+    CheckView verifiedimg;
     Boolean mVerified = false;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private AdView mAdView;
@@ -70,7 +72,7 @@ public class PhoneVerificationActivity extends BaseActivity {
         codeed = (EditText) findViewById(R.id.verificationed);
         fabbutton = (FloatingActionButton) findViewById(R.id.sendverifybt);
         timertext = (TextView) findViewById(R.id.timertv);
-        verifiedimg = (ImageView) findViewById(R.id.verifiedsign);
+        verifiedimg = (CheckView) findViewById(R.id.verifiedsign);
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
@@ -245,6 +247,8 @@ public class PhoneVerificationActivity extends BaseActivity {
                             mVerified = true;
                             timer.cancel();
                             verifiedimg.setVisibility(View.VISIBLE);
+                            verifiedimg.check();
+
                             timertext.setVisibility(View.INVISIBLE);
                             phoneed.setEnabled(false);
                             countryCodePicker.setCcpClickable(false);
